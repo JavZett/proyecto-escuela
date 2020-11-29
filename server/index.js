@@ -1,5 +1,6 @@
 const { configuracion } = require('./config/config');
 const { conexionDB } = require('./config/conexion');
+const path = require('path');
 
 configuracion(4000, '30d', 'holajeje');
 
@@ -13,6 +14,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
+app.use(express.static(path.resolve(__dirname, '../public')));
+
 app.use(require('./routes/index'));
 
 conexionDB();
@@ -20,7 +23,3 @@ conexionDB();
 app.listen(process.env.PORT, () =>
   console.log('Escuchando puerto: ', process.env.PORT)
 );
-
-// console.log(
-//   `Caducidad: ${process.env.CADUCIDAD_TOKEN} Token ${process.env.SEED}`
-// );
