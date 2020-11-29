@@ -1,12 +1,7 @@
 const { configuracion } = require('./config/config');
 const { conexionDB } = require('./config/conexion');
 
-configuracion(
-  4000,
-  '30d',
-  'holajeje',
-  'mongodb://localhost:27017/proyecto_escuela'
-);
+configuracion(4000, '30d', 'holajeje');
 
 const express = require('express');
 const cors = require('cors');
